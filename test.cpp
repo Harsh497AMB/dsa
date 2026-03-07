@@ -1,0 +1,9 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int ans = 0^7^3^7;
+    cout<<ans;
+     
+      
+}
