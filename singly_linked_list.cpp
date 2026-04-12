@@ -32,7 +32,7 @@ Node* convertArratToLL(vector<int> v){
         return head;
     }
 
- void printLL(Node* head){
+void printLL(Node* head){
         Node* mover = head;
         
         while(mover != nullptr){
@@ -92,6 +92,27 @@ Node* insertAtKth(Node* head , int k , int val){
     while(temp != NULL){
         k--;
         if(k==0){
+            Node* newNode = new Node(val);
+            prev->next = newNode;
+            newNode->next = temp;
+            break;
+        }
+        prev = temp;
+        temp = temp->next;
+    }
+    return head;
+}
+
+Node* insertB4K(Node* head ,int val){
+    Node* temp = head;
+    if(head == NULL) return new Node(val);
+    if(val <= head->data){
+        return new Node(val , head);
+    }
+        else return NULL;
+    Node* prev = NULL;
+    while(temp != NULL){
+        if(temp ->data > val){
             Node* newNode = new Node(val);
             prev->next = newNode;
             newNode->next = temp;
@@ -171,7 +192,7 @@ Node* deleteVal(Node* head , int val){
     return head;
 }
 int main(){
-    vector<int> v = {1,2,3,4,5};
+    vector<int> v = {1,4,6,7,8,34};
     Node* head = convertArratToLL(v);
     // cout<<head<<endl;
     // printLL(head);
@@ -189,6 +210,8 @@ int main(){
     // printLL(head);
     // head = insertAtTail(head , 9);
     // printLL(head);
-    head = insertAtKth(head , 1 ,69);
+    // head = insertAtKth(head , 1 ,69);
+    // printLL(head);
+    head = insertB4K(head , 0);
     printLL(head);
 }
